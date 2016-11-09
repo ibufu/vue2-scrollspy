@@ -1,0 +1,24 @@
+{
+  "name": "vue2-scrollspy",
+  "version": "1.0.0",
+  "description": "Scrollspy for Vue2",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel ./src/index.js -o ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibufu/vue2-scrollspy.git"
+  },
+  "author": "morning",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibufu/vue2-scrollspy/issues"
+  },
+  "homepage": "https://github.com/ibufu/vue2-scrollspy#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0"
+  }
+}

@@ -6,6 +6,12 @@
   "scripts": {
     "build": "./node_modules/.bin/babel ./src/index.js -o ./dist/index.js"
   },
+  "keywords": [
+    "scrollspy",
+    "scroll",
+    "vue",
+    "vue2"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ibufu/vue2-scrollspy.git"

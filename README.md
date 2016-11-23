@@ -1,6 +1,6 @@
 # vue2-scrollspy
 
-Scrollspy, and animated scrolt-to, for Vue2, inspired by [vue-scrollspy](https://github.com/kvdmolen/vue-scrollspy).
+Scrollspy, and animated scroll-to, for Vue2, inspired by [vue-scrollspy](https://github.com/kvdmolen/vue-scrollspy).
 
 ## Installation
 

@@ -12,7 +12,7 @@ $ npm install vue2-scrollspy --save
 
 ```js
 import Vue from 'vue';
-import Scrollspy from 'vue-scrollspy';
+import Scrollspy from 'vue2-scrollspy';
 Vue.use(Scrollspy);
 ```
 

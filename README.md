@@ -30,7 +30,7 @@ HTML:
     </li>
 </ul>
 
-<div v-scrollspy="scrollPos">
+<div v-scroll-spy="scrollPos">
     <div>
         <h1>Header 1</h1>
         <p>Content</p>

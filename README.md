@@ -51,3 +51,23 @@ new Vue({
     }
 })
 ```
+
+### Note
+If you want to set something else (not body) to scroll container, you could:
+```html
+<div class="container" v-scroll-spy="scrollPos">
+    <div>
+        <h1>Header 1</h1>
+        <p>Content</p>
+    </div>
+    <div>
+        <h1>Header 2</h1>
+        <p>Content</p>
+    </div>
+</div>
+```
+```css
+.container {
+  position: relative;
+}
+```

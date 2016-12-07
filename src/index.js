@@ -4,10 +4,15 @@
 let scrollSections = [];
 
 function init(el) {
-    scrollSections = [0];
+    scrollSections = [];
     const sections = el.children;
+    if (sections[0] && sections[0].offsetParent !== el) {
+        el[scrollSpyContext].eventEl = window;
+        el[scrollSpyContext].scrollEl = document.body;
+    }
+
     for (let i = 0; i < sections.length; i++){
-        if(sections[i].offsetTop > 0){
+        if(sections[i].offsetTop >= 0){
             scrollSections.push(sections[i].offsetTop)
         }
     }
@@ -18,19 +23,20 @@ const scrollSpyContext = '@@scrollSpyContext';
 export default function install(Vue) {
     Vue.directive('scroll-spy', {
         bind: function(el, binding, vnode) {
-            init(el);
             function onScroll() {
-                const pos = el.scrollTop;
+                const { scrollEl, expression } = el[scrollSpyContext];
+                const pos = scrollEl.scrollTop;
                 let i = 0;
                 while (pos >= scrollSections[i]) {
                     i++;
                 }
 
-                vnode.context.$data[el[scrollSpyContext].expression] = i ? i - 1 : 0
+                vnode.context.$data[expression] = i ? i - 1 : 0
             }
 
             function scrollTo(index) {
-                const current = el.scrollTop;
+                const { scrollEl } = el[scrollSpyContext];
+                const current = scrollEl.scrollTop;
                 const target = scrollSections[index];
                 const time = 200;
                 const steps = 30;
@@ -38,25 +44,30 @@ export default function install(Vue) {
                 const gap = target - current;
                 for (let i=0; i <= steps; i ++) {
                     const pos = current + (gap / steps) * i;
-                    setTimeout(() => el.scrollTop = pos, timems * i)
+                    setTimeout(() => scrollEl.scrollTop = pos, timems * i)
                 }
-                // el.scrollTop = target;
             }
             vnode.context.$scrollTo = scrollTo;
 
             el[scrollSpyContext] = {
                 onScroll,
-                expression: binding.expression
+                expression: binding.expression,
+                eventEl: el,
+                scrollEl: el
             };
         },
         inserted: function (el) {
-            el.addEventListener('scroll', el[scrollSpyContext].onScroll);
+            init(el);
+
+            const { eventEl, onScroll } = el[scrollSpyContext];
+            eventEl.addEventListener('scroll', onScroll);
         },
         componentUpdated: function(el) {
             init(el);
         },
         unbind: function(el) {
-            el.removeEventListener('scroll', el[scrollSpyContext].onScroll);
+            const { eventEl, onScroll } = el[scrollSpyContext];
+            eventEl.removeEventListener('scroll', onScroll);
         }
     });
 }

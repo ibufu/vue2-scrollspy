@@ -3,7 +3,7 @@
  */
 import Vue from 'vue';
 import demo from './demo';
-import scrollSpy from 'vue2-scrollspy';
+import scrollSpy from '../../src/index';
 
 Vue.use(scrollSpy);
 

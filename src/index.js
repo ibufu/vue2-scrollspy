@@ -3,16 +3,29 @@
  */
 let scrollSections = [];
 
+const bodyScrollEl = {};
+
+// For ff, ie
+Object.defineProperty(bodyScrollEl, 'scrollTop', {
+    get() {
+        return document.body.scrollTop || document.documentElement.scrollTop;
+    },
+    set(val) {
+        document.body.scrollTop = val;
+        document.documentElement.scrollTop = val;
+    }
+});
+
 function init(el) {
     scrollSections = [];
     const sections = el.children;
     if (sections[0] && sections[0].offsetParent !== el) {
         el[scrollSpyContext].eventEl = window;
-        el[scrollSpyContext].scrollEl = document.body;
+        el[scrollSpyContext].scrollEl = bodyScrollEl;
     }
 
-    for (let i = 0; i < sections.length; i++){
-        if(sections[i].offsetTop >= 0){
+    for (let i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop >= 0) {
             scrollSections.push(sections[i].offsetTop)
         }
     }
@@ -42,9 +55,9 @@ export default function install(Vue) {
                 const steps = 30;
                 const timems = parseInt(time / steps);
                 const gap = target - current;
-                for (let i=0; i <= steps; i ++) {
+                for (let i = 0; i <= steps; i ++) {
                     const pos = current + (gap / steps) * i;
-                    setTimeout(() => scrollEl.scrollTop = pos, timems * i)
+                    setTimeout(() => scrollEl.scrollTop = pos, timems * i);
                 }
             }
             vnode.context.$scrollTo = scrollTo;

@@ -72,3 +72,6 @@ If you want to set something else (not body) to scroll container, you could:
   position: relative;
 }
 ```
+
+### license
+MIT

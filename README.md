@@ -78,5 +78,14 @@ If you want to set something else (not body) to scroll container, you could:
 }
 ```
 
-### license
+### Develop
+```shell
+npm i && npm start 
+```
+```shell
+cd docs/ && npm i && npm start
+```
+
+
+### License
 MIT

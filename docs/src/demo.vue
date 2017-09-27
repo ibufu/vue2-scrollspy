@@ -1,14 +1,8 @@
 <template>
     <div class="container">
         <ul class="menu">
-            <li :class="{active:scrollPos == 0}">
-                <a @click="$scrollTo(0)">Ludwig van Beethoven</a>
-            </li>
-            <li :class="{active:scrollPos == 1}">
-                <a @click="$scrollTo(1)">Biography</a>
-            </li>
-            <li :class="{active:scrollPos == 2}">
-                <a @click="$scrollTo(2)">Personal and family difficulties</a>
+            <li v-for="(item, index) in titles" class="menu-item" :class="{active:scrollPos == index}">
+                <a @click="$scrollTo(index)">{{item}}</a>
             </li>
         </ul>
         <div class="main" v-scroll-spy="scrollPos">
@@ -48,29 +42,40 @@
     </div>
 </template>
 <style>
-    .container {
-        display: flex;
-    }
     .menu {
-        flex: 1;
         position: fixed;
-        top: 10px;
+        top: 30px;
         left: 10px;
+        padding: 0;
+        list-style: none;
+        max-width: 230px;
+        font-size: 18px;
+    }
+    .menu-item {
+        cursor: pointer;
+        margin-bottom: 20px;
     }
     .main {
-        flex: 9;
-        margin-left: 250px;
+        margin-left: 300px;
         font-size: 25px;
     }
     .active {
-        color: red
+        color: #178ce6;
+        border-left: 1px solid #178ce6;
+        padding-left: 5px;
+        transition: all 0.5s;
     }
 </style>
 <script>
     export default{
         data(){
             return{
-                scrollPos: 0
+                scrollPos: 0,
+                titles: [
+                  'Ludwig van Beethoven',
+                  'Biography',
+                  'Personal and family difficulties'
+                ]
             }
         }
     }

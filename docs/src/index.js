@@ -7,6 +7,8 @@ import scrollSpy from '../../src/index';
 
 Vue.use(scrollSpy);
 
+console.log('Vue version: ', Vue.version);
+
 const app = new Vue({
     ...demo
 });

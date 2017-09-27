@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --inline",
     "build": "webpack"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.1.4",
+    "vue": "^2.4.4",
     "vue2-scrollspy": "^1.1.1"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "css-loader": "^0.26.1",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.1.4",
+    "vue-template-compiler": "^2.4.4",
     "webpack": "^2.1.0-beta.27",
     "webpack-dev-server": "^1.16.2"
   }

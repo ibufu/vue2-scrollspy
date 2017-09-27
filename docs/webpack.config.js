@@ -12,7 +12,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: '/[name].js',
+        filename: '[name].js',
         publicPath: '/dist/'
     },
 
@@ -39,10 +39,10 @@ module.exports = {
         host: '0.0.0.0',
         compress: true,
         historyApiFallback: true,
-        port: 3000,
+        port: 6324,
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
-        }
+        },
     }
 };

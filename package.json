@@ -4,8 +4,9 @@
   "description": "Scrollspy for Vue2",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel ./src/index.js -w -o ./dist/index.js",
-    "build": "./node_modules/.bin/babel ./src/index.js -o ./dist/index.js"
+    "watch": "mkdirp dist && babel ./src/index.js --watch -o ./dist/index.js",
+    "build": "mkdirp dist && babel ./src/index.js -o ./dist/index.js",
+    "lint": "eslint ./src"
   },
   "keywords": [
     "scrollspy",
@@ -25,7 +26,15 @@
   "homepage": "https://github.com/ibufu/vue2-scrollspy#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-eslint": "^8.0.3",
     "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0"
+    "babel-preset-stage-0": "^6.16.0",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mkdirp": "^0.5.1"
   }
 }

@@ -1,11 +1,14 @@
 <template>
     <div class="container">
-        <ul class="menu">
-            <li v-for="(item, index) in titles" class="menu-item" :class="{active:scrollPos == index}">
-                <a @click="$scrollTo(index)">{{item}}</a>
-            </li>
-        </ul>
-        <div class="main" v-scroll-spy="scrollPos">
+        <div class="sidebar">
+            <ul class="menu" v-scroll-spy-active v-scroll-spy-link>
+                <li v-for="(item, index) in titles" class="menu-item">
+                    <a>{{item}}</a>
+                </li>
+            </ul>
+            <div class="current-section">Section: {{section}}</div>
+        </div>
+        <div class="main" v-scroll-spy>
             <div>
                 <h1>Ludwig van Beethoven </h1>
                 <p>
@@ -42,18 +45,28 @@
     </div>
 </template>
 <style>
-    .menu {
+    .sidebar {
         position: fixed;
         top: 30px;
         left: 10px;
-        padding: 0;
-        list-style: none;
         max-width: 230px;
         font-size: 18px;
     }
+    .menu {
+        padding: 0;
+        list-style: none;
+    }
+    .current-section {
+        padding-top: 50px;
+    }
+    .current-section input {
+        max-width: 3em;
+    }
     .menu-item {
-        cursor: pointer;
         margin-bottom: 20px;
+    }
+    .menu-item a {
+        cursor: pointer;
     }
     .main {
         margin-left: 300px;
@@ -67,16 +80,16 @@
     }
 </style>
 <script>
-    export default{
-        data(){
-            return{
-                scrollPos: 0,
-                titles: [
-                  'Ludwig van Beethoven',
-                  'Biography',
-                  'Personal and family difficulties'
-                ]
-            }
-        }
+  export default {
+    data () {
+      return {
+        section: 0,
+        titles: [
+          'Ludwig van Beethoven',
+          'Biography',
+          'Personal and family difficulties'
+        ]
+      }
     }
+  }
 </script>

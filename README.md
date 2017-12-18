@@ -24,19 +24,17 @@ Vue.use(Scrollspy);
 
 ## Usage
 
-HTML:
-
 ```html
-<ul>
-    <li :class="{active:scrollPos == 0}">
-        <a @click="$scrollTo(0)">Menu 1</a>
+<ul v-scroll-spy-active v-scroll-spy-link>
+    <li>
+        <a>Menu 1</a>
     </li>
-    <li :class="{active:scrollPos == 1}">
-        <a @click="$scrollTo(1)">Menu 2</a>
+    <li>
+        <a>Menu 2</a>
     </li>
 </ul>
 
-<div v-scroll-spy="scrollPos">
+<div v-scroll-spy>
     <div>
         <h1>Header 1</h1>
         <p>Content</p>
@@ -48,20 +46,43 @@ HTML:
 </div>
 ```
 
-Javascript:
+- **v-scroll-spy**
 
-```js
-new Vue({
-    data: {
-        scrollPos: 0
-    }
-})
-```
+Declares container of sections for elements to scrollspy.
+
+Use `v-scroll-spy="{data: 'section'}"` to add a `section` data property in scope Vue instance that is binded to the 
+section index.
+
+Use `v-scroll-spy="{allowNoActive: true}"` to allow no active sections when scroll position is outside of the scrollspy 
+container. Default behavior is too keep active at least one section in any case.
+
+`$scrollTo(index: int)` is provided on scope Vue instance to invoke a scroll to the given section index.
+
+- **v-scroll-spy-active**
+
+Set the `active` css class on element that match the index of current scrollspy.
+
+Use `v-scroll-spy-active="{selector: 'li.menu-item', class: 'custom-active'}"` to customize elements selection and class 
+name to apply. By default, it will use direct children and apply `active` class.
+
+- **v-scroll-spy-link**
+
+Add click handler on children elements that will scroll to the related section.
+
+Use `v-scroll-spy-link="{selector: 'a.menu-link'}"` to customize elements selection. By default, it will use `a` to
+select all links.  
 
 ### Note
+
+You should have the same number of children elements for `v-scroll-spy`, `v-scroll-spy-active` `v-scroll-spy-link` for 
+directives to work properly.
+
+If you need to share multiple scroll-spy in the same page, you can add `data-scroll-spy-id=""` on each element where a 
+directive is declared.
+
 If you want to set something else (not body) to scroll container, you could:
 ```html
-<div class="container" v-scroll-spy="scrollPos">
+<div class="container" v-scroll-spy>
     <div>
         <h1>Header 1</h1>
         <p>Content</p>
@@ -80,10 +101,10 @@ If you want to set something else (not body) to scroll container, you could:
 
 ### Develop
 ```shell
-npm i && npm start 
+npm i && npm run watch 
 ```
 ```shell
-cd docs/ && npm i && npm start
+cd docs-src && npm i && npm run dev
 ```
 
 

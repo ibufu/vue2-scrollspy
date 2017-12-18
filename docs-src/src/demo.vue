@@ -8,7 +8,7 @@
             </ul>
             <div class="current-section">Section: {{section}}</div>
         </div>
-        <div class="main" v-scroll-spy>
+        <div class="main" v-scroll-spy="{data: 'section'}">
             <div>
                 <h1>Ludwig van Beethoven </h1>
                 <p>

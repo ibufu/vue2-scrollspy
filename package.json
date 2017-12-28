@@ -1,6 +1,6 @@
 {
   "name": "vue2-scrollspy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Scrollspy for Vue2",
   "main": "./dist/index.js",
   "scripts": {

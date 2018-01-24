@@ -34,6 +34,9 @@ export default function install (Vue, options) {
   options = Object.assign({
     allowNoActive: false,
     data: null,
+    offset: 0,
+    time: 200,
+    steps: 30,
     active: {
       selector: null,
       class: 'active'
@@ -106,13 +109,13 @@ export default function install (Vue, options) {
     const id = scrollSpyId(el)
     const idScrollSections = scrollSpySections[id]
 
-    const {scrollEl} = el[scrollSpyContext]
+    const {scrollEl, options} = el[scrollSpyContext]
     const current = scrollEl.scrollTop
 
     if (idScrollSections[index]) {
-      const target = getOffsetTop(idScrollSections[index])
-      const time = 200
-      const steps = 30
+      const target = getOffsetTop(idScrollSections[index]) - options.offset
+      const time = options.time
+      const steps = options.steps
       const timems = parseInt(time / steps)
       const gap = target - current
       for (let i = 0; i <= steps; i++) {
@@ -138,7 +141,7 @@ export default function install (Vue, options) {
           index = idScrollSections.length
         } else {
           for (index = 0; index < idScrollSections.length; index++) {
-            if (getOffsetTop(idScrollSections[index], scrollEl) > scrollEl.scrollTop) {
+            if (getOffsetTop(idScrollSections[index], scrollEl) - options.offset > scrollEl.scrollTop) {
               break
             }
           }

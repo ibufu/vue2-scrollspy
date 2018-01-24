@@ -46,37 +46,37 @@ Vue.use(Scrollspy);
 </div>
 ```
 
-- **v-scroll-spy**
+### **v-scroll-spy**
 
 Declares container of sections for elements to scrollspy.
 
-Use `v-scroll-spy="{data: 'section'}"` to add a `section` data property in scope Vue instance that is binded to the 
+1. Use `v-scroll-spy="{data: 'section'}"` to add a `section` data property in scope Vue instance that is binded to the 
 section index.
 
-Use `v-scroll-spy="{allowNoActive: true}"` to allow no active sections when scroll position is outside of the scrollspy 
+2. Use `v-scroll-spy="{allowNoActive: true}"` to allow no active sections when scroll position is outside of the scrollspy 
 container. Default behavior is too keep active at least one section in any case.
 
-Use `v-scroll-spy="{offset: 50}"` to add an offset for scroll and active events.
+3. Use `v-scroll-spy="{offset: 50}"` to add an offset for scroll and active events.
 
-Use `v-scroll-spy="{time: 200, steps: 30}"` to set the animation options.
+4. Use `v-scroll-spy="{time: 200, steps: 30}"` to set the animation options.
 
-`$scrollTo(index: int)` is provided on scope Vue instance to invoke a scroll to the given section index.
+5. `$scrollTo(index: int)` is provided on scope Vue instance to invoke a scroll to the given section index.
 
-- **v-scroll-spy-active**
+### **v-scroll-spy-active**
 
 Set the `active` css class on element that match the index of current scrollspy.
 
-Use `v-scroll-spy-active="{selector: 'li.menu-item', class: 'custom-active'}"` to customize elements selection and class 
+1. Use `v-scroll-spy-active="{selector: 'li.menu-item', class: 'custom-active'}"` to customize elements selection and class 
 name to apply. By default, it will use direct children and apply `active` class.
 
-- **v-scroll-spy-link**
+### **v-scroll-spy-link**
 
 Add click handler on children elements that will scroll to the related section.
 
-Use `v-scroll-spy-link="{selector: 'a.menu-link'}"` to customize elements selection. By default, it will use `a` to
+1. Use `v-scroll-spy-link="{selector: 'a.menu-link'}"` to customize elements selection. By default, it will use `a` to
 select all links.  
 
-### Note
+## Note
 
 You should have the same number of children elements for `v-scroll-spy`, `v-scroll-spy-active` `v-scroll-spy-link` for 
 directives to work properly.
@@ -103,7 +103,7 @@ If you want to set something else (not body) to scroll container, you could:
 }
 ```
 
-### Develop
+## Develop
 ```shell
 npm i && npm run watch 
 ```
@@ -112,5 +112,5 @@ cd docs-src && npm i && npm run dev
 ```
 
 
-### License
+## License
 MIT

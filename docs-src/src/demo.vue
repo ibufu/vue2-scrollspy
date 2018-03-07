@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="sidebar">
-            <ul class="menu" v-scroll-spy-active v-scroll-spy-link>
+            <ul class="menu" v-scroll-spy-active="{class: 'customActive'}" v-scroll-spy-link>
                 <li v-for="(item, index) in titles" class="menu-item">
                     <a>{{item}}</a>
                 </li>
@@ -72,7 +72,7 @@
         margin-left: 300px;
         font-size: 25px;
     }
-    .active {
+    .customActive {
         color: #178ce6;
         border-left: 1px solid #178ce6;
         padding-left: 5px;

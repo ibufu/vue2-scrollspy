@@ -159,7 +159,7 @@ export default function install (Vue, options) {
         if (index !== currentIndex[id]) {
           let idActiveElement = activeElement[id]
           if (idActiveElement) {
-            idActiveElement.classList.remove('active')
+            idActiveElement.classList.remove(idActiveElement[scrollSpyContext].options.class)
             activeElement[id] = null
           }
 
@@ -169,7 +169,7 @@ export default function install (Vue, options) {
             activeElement[id] = idActiveElement
 
             if (idActiveElement) {
-              idActiveElement.classList.add('active')
+              idActiveElement.classList.add(idActiveElement[scrollSpyContext].options.class)
             }
           }
 
@@ -214,21 +214,25 @@ export default function install (Vue, options) {
     }
   })
 
-  Vue.directive('scroll-spy-active', {
-    inserted: function (el, binding) {
-      const activeOptions = Object.assign({}, options.active, binding.value)
-      initScrollActive(el, activeOptions.selector)
-    },
-    componentUpdated: function (el, binding) {
-      const activeOptions = Object.assign({}, options.active, binding.value)
-      initScrollActive(el, activeOptions.selector)
-    }
-  })
-
-  function initScrollActive (el, selector) {
-    const id = scrollSpyId(el)
-    activableElements[id] = findElements(el, selector)
+  function scrollSpyActive (el, binding) {
+    const activeOptions = Object.assign({}, options.active, binding.value)
+    initScrollActiveElement(el, activeOptions)
   }
+
+  function initScrollActiveElement (el, activeOptions) {
+    const id = scrollSpyId(el)
+    activableElements[id] = findElements(el, activeOptions.selector)
+    Array.from(activableElements[id]).map(el => {
+      el[scrollSpyContext] = {
+        options: activeOptions
+      }
+    })
+  }
+
+  Vue.directive('scroll-spy-active', {
+    inserted: scrollSpyActive,
+    componentUpdated: scrollSpyActive
+  })
 
   function scrollLinkClickHandler (index, scrollSpyId, event) {
     scrollTo(scrollSpyElements[scrollSpyId], index)

@@ -164,7 +164,7 @@ export default function install (Vue, options) {
           }
 
           currentIndex[id] = index
-          if (typeof currentIndex !== 'undefined') {
+          if (typeof currentIndex !== 'undefined' && Object.keys(activableElements).length > 0) {
             idActiveElement = activableElements[id][currentIndex[id]]
             activeElement[id] = idActiveElement
 

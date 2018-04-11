@@ -33,6 +33,7 @@ export default function install (Vue, options) {
 
   options = Object.assign({
     allowNoActive: false,
+    sectionSelector: null,
     data: null,
     offset: 0,
     time: 200,
@@ -83,14 +84,15 @@ export default function install (Vue, options) {
     return 'default'
   }
 
-  function initScrollSections (el, selector) {
+  function initScrollSections (el) {
     const id = scrollSpyId(el)
-    const idScrollSections = findElements(el, selector)
+    const sectionEl = el[scrollSpyContext]
+    const idScrollSections = findElements(el, sectionEl.options.sectionSelector)
     scrollSpySections[id] = idScrollSections
 
     if (idScrollSections[0] && idScrollSections[0].offsetParent !== el) {
-      el[scrollSpyContext].eventEl = window
-      el[scrollSpyContext].scrollEl = bodyScrollEl
+      sectionEl.eventEl = window
+      sectionEl.scrollEl = bodyScrollEl
     }
   }
 

@@ -192,6 +192,7 @@ export default function install (Vue, options) {
       }
 
       scrollSpyElements[id] = el
+      delete currentIndex[id]
     },
     inserted: function (el) {
       initScrollSections(el)

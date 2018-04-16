@@ -35,6 +35,7 @@ export default function install (Vue, options) {
 
   options = Object.assign({
     allowNoActive: false,
+    sectionSelector: null,
     data: null,
     offset: 0,
     time: 500,
@@ -86,14 +87,15 @@ export default function install (Vue, options) {
     return 'default'
   }
 
-  function initScrollSections (el, selector) {
+  function initScrollSections (el, sectionSelector) {
     const id = scrollSpyId(el)
-    const idScrollSections = findElements(el, selector)
+    const scrollSpyContext = el[scrollSpyContext]
+    const idScrollSections = findElements(el, sectionSelector)
     scrollSpySections[id] = idScrollSections
 
     if (idScrollSections[0] && idScrollSections[0].offsetParent !== el) {
-      el[scrollSpyContext].eventEl = window
-      el[scrollSpyContext].scrollEl = bodyScrollEl
+      scrollSpyContext.eventEl = window
+      scrollSpyContext.scrollEl = bodyScrollEl
     }
   }
 
@@ -203,18 +205,17 @@ export default function install (Vue, options) {
       delete currentIndex[id]
     },
     inserted: function (el) {
-      initScrollSections(el)
+      const {eventEl, onScroll, options: {sectionSelector}} = el[scrollSpyContext]
 
-      const {eventEl, onScroll} = el[scrollSpyContext]
+      initScrollSections(el, sectionSelector)
       eventEl.addEventListener('scroll', onScroll)
 
       onScroll()
     },
     componentUpdated: function (el) {
-      initScrollSections(el)
+      const {onScroll, options: {sectionSelector}} = el[scrollSpyContext]
 
-      const {onScroll} = el[scrollSpyContext]
-
+      initScrollSections(el, sectionSelector)
       onScroll()
     },
     unbind: function (el) {

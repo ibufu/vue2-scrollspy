@@ -1,3 +1,5 @@
+import { scrollWithAnimation, Easing } from './animate.js'
+
 export default function install (Vue, options) {
   const bodyScrollEl = {}
 
@@ -35,8 +37,9 @@ export default function install (Vue, options) {
     allowNoActive: false,
     data: null,
     offset: 0,
-    time: 200,
+    time: 500,
     steps: 30,
+    easing: null,
     active: {
       selector: null,
       class: 'active'
@@ -114,6 +117,11 @@ export default function install (Vue, options) {
 
     if (idScrollSections[index]) {
       const target = getOffsetTop(idScrollSections[index]) - options.offset
+      if (options.easing) {
+        scrollWithAnimation(scrollEl, current, target, options.time, options.easing)
+        return
+      }
+
       const time = options.time
       const steps = options.steps
       const timems = parseInt(time / steps)
@@ -287,3 +295,5 @@ export default function install (Vue, options) {
     }
   })
 }
+
+export { Easing }

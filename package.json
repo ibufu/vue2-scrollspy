@@ -37,5 +37,8 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "mkdirp": "^0.5.1"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.2.0"
   }
 }

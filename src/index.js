@@ -197,7 +197,7 @@ export default function install (Vue, options) {
     },
     inserted: function (el) {
       const {eventEl, onScroll, options: {sectionSelector}} = el[scrollSpyContext]
-      
+
       initScrollSections(el, sectionSelector)
       eventEl.addEventListener('scroll', onScroll)
 
@@ -205,7 +205,7 @@ export default function install (Vue, options) {
     },
     componentUpdated: function (el) {
       const {onScroll, options: {sectionSelector}} = el[scrollSpyContext]
-      
+
       initScrollSections(el, sectionSelector)
       onScroll()
     },

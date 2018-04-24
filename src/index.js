@@ -205,9 +205,9 @@ export default function install (Vue, options) {
       delete currentIndex[id]
     },
     inserted: function (el) {
-      const {eventEl, onScroll, options: {sectionSelector}} = el[scrollSpyContext]
-
+      const {options: {sectionSelector}} = el[scrollSpyContext]
       initScrollSections(el, sectionSelector)
+      const {eventEl, onScroll} = el[scrollSpyContext]
       eventEl.addEventListener('scroll', onScroll)
 
       onScroll()

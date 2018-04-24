@@ -14,15 +14,16 @@ See https://ibufu.github.io/vue2-scrollspy/
 $ npm install vue2-scrollspy --save
 ```
 
-## Setup
-
+## Basic Usage
 ```js
 import Vue from 'vue';
 import Scrollspy from 'vue2-scrollspy';
+// use default options
 Vue.use(Scrollspy);
-```
 
-## Usage
+// or custom options
+Vue.use(Scrollspy, options);
+```
 
 ```html
 <ul v-scroll-spy-active v-scroll-spy-link>
@@ -45,6 +46,8 @@ Vue.use(Scrollspy);
     </div>
 </div>
 ```
+
+## Configuration
 
 ### **v-scroll-spy**
 
@@ -75,6 +78,19 @@ Add click handler on children elements that will scroll to the related section.
 
 1. Use `v-scroll-spy-link="{selector: 'a.menu-link'}"` to customize elements selection. By default, it will use `a` to
 select all links.  
+
+### Bezier animations
+
+Example:
+```js
+import scrollSpy, { Easing } from 'vue2-scrollspy';
+
+Vue.use(scrollSpy, {
+  easing: Easing.Cubic.In
+});
+```
+Easing options:
+http://tweenjs.github.io/tween.js/examples/03_graphs.html
 
 ## Note
 

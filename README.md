@@ -53,30 +53,32 @@ Vue.use(Scrollspy, options);
 
 Declares container of sections for elements to scrollspy.
 
-1. Use `v-scroll-spy="{data: 'section'}"` to add a `section` data property in scope Vue instance that is binded to the 
+1. `v-scroll-spy="{data: 'section'}"`: add a `section` data property in scope Vue instance that is binded to the 
 section index.
 
-2. Use `v-scroll-spy="{allowNoActive: true}"` to allow no active sections when scroll position is outside of the scrollspy 
+2. `v-scroll-spy="{allowNoActive: true}"`: allow no active sections when scroll position is outside of the scrollspy 
 container. Default behavior is too keep active at least one section in any case.
 
-3. Use `v-scroll-spy="{offset: 50}"` to add an offset for scroll and active events.
+3. `v-scroll-spy="{offset: 50}"`: add an offset for scroll and active events.
 
-4. Use `v-scroll-spy="{time: 200, steps: 30}"` to set the animation options.
+4. `v-scroll-spy="{time: 200, steps: 30}"`: set the animation options.
 
 5. `$scrollTo(index: int)` is provided on scope Vue instance to invoke a scroll to the given section index.
+
+6. `v-section-selector`: set section which should scrollto
 
 ### **v-scroll-spy-active**
 
 Set the `active` css class on element that match the index of current scrollspy.
 
-1. Use `v-scroll-spy-active="{selector: 'li.menu-item', class: 'custom-active'}"` to customize elements selection and class 
+1. `v-scroll-spy-active="{selector: 'li.menu-item', class: 'custom-active'}"`: customize elements selection and class 
 name to apply. By default, it will use direct children and apply `active` class.
 
 ### **v-scroll-spy-link**
 
 Add click handler on children elements that will scroll to the related section.
 
-1. Use `v-scroll-spy-link="{selector: 'a.menu-link'}"` to customize elements selection. By default, it will use `a` to
+1. `v-scroll-spy-link="{selector: 'a.menu-link'}"`: customize elements selection. By default, it will use `a` to
 select all links.  
 
 ### Bezier animations

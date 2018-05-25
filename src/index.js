@@ -1,6 +1,8 @@
 import { scrollWithAnimation, Easing } from './animate.js'
 
-export default function install (Vue, options) {
+const install = (Vue, options) => {
+  if (install.installed) return
+
   const bodyScrollEl = {}
 
   // For ff, ie
@@ -298,4 +300,13 @@ export default function install (Vue, options) {
   })
 }
 
-export { Easing }
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+};
+
+export default install
+
+export {
+  Easing,
+  install
+}

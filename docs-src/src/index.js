@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import demo from './demo.vue'
-import scrollSpy, { Easing } from '../../src/index'
+import scrollSpy, { Easing } from '../../dist/index'
 
 Vue.use(scrollSpy, {
   easing: Easing.Cubic.In

@@ -2,10 +2,12 @@
   "name": "vue2-scrollspy",
   "version": "2.2.2",
   "description": "Scrollspy for Vue2",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "watch": "mkdirp dist && babel src --watch -o --out-dir dist",
-    "build": "mkdirp dist && babel src --out-dir dist",
+    "watch": "webpack --config build/webpack.config.js --watch",
+    "build": "webpack --config build/webpack.config.js",
+    "build:report": "npm run build --report",
     "lint": "eslint ./src",
     "prepublish": "npm run build"
   },
@@ -26,20 +28,21 @@
   },
   "homepage": "https://github.com/ibufu/vue2-scrollspy#readme",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-eslint": "^8.0.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.13.1",
     "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "webpack": "^4.8.3",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^2.1.4"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^17.2.0"

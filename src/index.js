@@ -212,7 +212,8 @@ export default function install (Vue, options) {
 
       onScroll()
     },
-    componentUpdated: function (el) {
+    componentUpdated: function (el, binding) {
+      el[scrollSpyContext].options = Object.assign({}, options, binding.value)
       const {onScroll, options: {sectionSelector}} = el[scrollSpyContext]
 
       initScrollSections(el, sectionSelector)

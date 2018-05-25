@@ -17,7 +17,7 @@ $ npm install vue2-scrollspy --save
 
 ### CDN
 ```html
-<script src="unpkg.com/vue2-scrollspy/dist/index.js"></script>
+<script src="//unpkg.com/vue2-scrollspy/dist/index.js"></script>
 ```
 
 ## Basic Usage

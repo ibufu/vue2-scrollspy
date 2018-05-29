@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/ibufu/vue2-scrollspy/blob/master/LICENSE)
 
 Scrollspy, and animated scroll-to, for Vue2, inspired by [vue-scrollspy](https://github.com/kvdmolen/vue-scrollspy).
-See https://ibufu.github.io/vue2-scrollspy/
+See https://ibufu.github.io/vue2-scrollspy/ or [Jsfiddle](https://jsfiddle.net/ibufu/nw0zczLx/).
 
 ## Installation
 

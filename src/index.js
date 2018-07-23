@@ -61,7 +61,7 @@ const install = (Vue, options) => {
 
     const elements = []
 
-    for (let el of container.querySelectorAll(selector)) {
+    for (const el of container.querySelectorAll(selector)) {
       // Filter out elements that are owned by another directive
       if (scrollSpyIdFromAncestors(el) === id) {
         elements.push(el)
@@ -116,7 +116,7 @@ const install = (Vue, options) => {
     const id = scrollSpyId(el)
     const idScrollSections = scrollSpySections[id]
 
-    const {scrollEl, options} = el[scrollSpyContext]
+    const { scrollEl, options } = el[scrollSpyContext]
     const current = scrollEl.scrollTop
 
     if (idScrollSections[index]) {
@@ -145,7 +145,7 @@ const install = (Vue, options) => {
         const id = scrollSpyId(el)
         const idScrollSections = scrollSpySections[id]
 
-        const {scrollEl, options} = el[scrollSpyContext]
+        const { scrollEl, options } = el[scrollSpyContext]
 
         let index
 
@@ -207,22 +207,26 @@ const install = (Vue, options) => {
       delete currentIndex[id]
     },
     inserted: function (el) {
-      const {options: {sectionSelector}} = el[scrollSpyContext]
+      const {
+        options: { sectionSelector }
+      } = el[scrollSpyContext]
       initScrollSections(el, sectionSelector)
-      const {eventEl, onScroll} = el[scrollSpyContext]
+      const { eventEl, onScroll } = el[scrollSpyContext]
       eventEl.addEventListener('scroll', onScroll)
 
       onScroll()
     },
     componentUpdated: function (el, binding) {
       el[scrollSpyContext].options = Object.assign({}, options, binding.value)
-      const {onScroll, options: {sectionSelector}} = el[scrollSpyContext]
+      const {
+        onScroll, options: { sectionSelector }
+      } = el[scrollSpyContext]
 
       initScrollSections(el, sectionSelector)
       onScroll()
     },
     unbind: function (el) {
-      const {eventEl, onScroll} = el[scrollSpyContext]
+      const { eventEl, onScroll } = el[scrollSpyContext]
       eventEl.removeEventListener('scroll', onScroll)
     }
   })
@@ -254,7 +258,7 @@ const install = (Vue, options) => {
   function initScrollLink (el, selector) {
     const id = scrollSpyId(el)
 
-    let linkElements = findElements(el, selector)
+    const linkElements = findElements(el, selector)
 
     for (let i = 0; i < linkElements.length; i++) {
       const linkElement = linkElements[i]

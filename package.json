@@ -9,6 +9,7 @@
     "build": "webpack --config build/webpack.config.js",
     "build:report": "npm run build --report",
     "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -28,17 +29,20 @@
   },
   "homepage": "https://github.com/ibufu/vue2-scrollspy#readme",
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.13.1",
     "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-vue": "^2.0.2",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.7.0",
     "mkdirp": "^0.5.1",
     "webpack": "^4.8.3",
     "webpack-bundle-analyzer": "^2.13.1",

@@ -239,7 +239,8 @@ const install = (Vue, options) => {
   function initScrollActiveElement (el, activeOptions) {
     const id = scrollSpyId(el)
     activableElements[id] = findElements(el, activeOptions.selector)
-    Array.from(activableElements[id]).map(el => {
+    const arr = [...activableElements[id]]
+    arr.map(el => {
       el[scrollSpyContext] = {
         options: activeOptions
       }

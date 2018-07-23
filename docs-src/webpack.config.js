@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -13,7 +14,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue']
   },
-  plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: './index.html' }),
+    new VueLoaderPlugin()
+  ],
   module: {
     rules: [
       {
@@ -27,6 +31,13 @@ module.exports = {
           'eslint-loader'
         ],
         exclude: /node_modules|dist/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   }

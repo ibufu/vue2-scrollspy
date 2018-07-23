@@ -1,16 +1,12 @@
-
 {
   "presets": [
-    ["env", {
+    ["@babel/env", {
       "modules": false,
-      "loose": true,
       "targets": {
         "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
+      },
+      "useBuiltIns": "usage"
     }],
-    "stage-2"
-  ],
-  "plugins": [
-    "transform-object-assign"
+    "@babel/preset-stage-2"
   ]
 }

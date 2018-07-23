@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server --inline",
-    "build": "webpack",
+    "serve": "webpack-dev-server --inline --mode=development",
+    "build": "webpack --mode=production",
     "lint": "eslint ./src"
   },
   "author": "",
@@ -14,24 +14,24 @@
     "vue": "^2.5"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-stage-2": "^7.0.0-beta.54",
     "babel-eslint": "^8.0.3",
-    "babel-loader": "^6.2.8",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "css-loader": "^0.28.7",
+    "babel-loader": "^8.0.0-beta.4",
+    "css-loader": "^0.28.11",
     "eslint": "^4.13.1",
     "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-loader": "^1.9.0",
+    "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "html-webpack-plugin": "^2.30.1",
-    "install": "^0.10.2",
-    "vue-loader": "^13.5.0",
+    "html-webpack-plugin": "^3.2.0",
+    "vue-loader": "^15.2.6",
+    "vue-style-loader": "^4.1.1",
     "vue-template-compiler": "^2.5.11",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack": "^4.16.2",
+    "webpack-dev-server": "^3.1.5"
   }
 }

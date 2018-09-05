@@ -1,3 +1,9 @@
+---
+name: Behavior Bug
+about: Server Bug
+
+---
+
 ### Vue version: 
 ### vue2-scrollspy version:
 ### Expected behavior:

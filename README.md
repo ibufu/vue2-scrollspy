@@ -56,7 +56,7 @@ Vue.use(Scrollspy, options);
 
 ### Old Browsers
 Old Browsers like IE11:
-```
+```js
 import Scrollspy from "vue2-scrollspy/dist/index";
 Vue.use(Scrollspy);
 ```
